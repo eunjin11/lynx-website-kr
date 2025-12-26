@@ -1,0 +1,33 @@
+# onDataUpdated
+
+Called when data update, but the view may not be updated.
+
+## Syntax
+
+### Android
+
+```java
+public void onDataUpdated();
+```
+
+### iOS
+
+```objc
+- (void)lynxViewDidUpdate:(LynxView *)view;
+```
+
+#### Parameters
+
+- `view`: The LynxView instance.
+
+### Harmony
+
+```typescript
+public onDataUpdated(): void;
+```
+
+## Compatibility
+
+import { APITable } from '@lynx';
+
+<APITable query="lynx-native-api/lynx-view-client/on-data-updated" />

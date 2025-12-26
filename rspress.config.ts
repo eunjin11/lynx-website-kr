@@ -148,7 +148,7 @@ export default defineConfig({
         lang: 'ko',
         title: 'Lynx',
         description:
-          'Web 기술로 크로스플랫폼 앱을 빠르게 구축하는 고성능 프레임워크',
+          '웹 커뮤니티를 강화하고, 더 많은 사람들이 크로스 플랫폼 앱을 만들 수 있도록 돕습니다.',
         label: '한국어',
         editLink: {
           docRepoBaseUrl:

@@ -1,0 +1,72 @@
+import {
+  AndroidOnly,
+  IOSOnly,
+  ClayOnly,
+  HarmonyOnly,
+  Required,
+  Deprecated,
+  Go,
+  PlatformTabs,
+  VersionBadge,
+} from '@lynx';
+import { APITable } from '@lynx';
+
+## Attributes
+
+### `data`
+
+{' '}
+
+<AndroidOnly /> <IOSOnly /> <VersionBadge>3.4</VersionBadge>
+
+```tsx
+data?: Record<string, unknown>;
+```
+
+Passes data to the nested Lynx page within the frame.
+
+### `global-props`
+
+{' '}
+
+<AndroidOnly /> <IOSOnly /> <VersionBadge>3.6</VersionBadge>
+
+```tsx
+'global-props'?: Record<string, unknown>;
+```
+
+Passes `globalProps` to the Lynx page embedded in the frame. The embedded page can read it via [`lynx.__globalProps`](../../lynx-api/lynx/lynx-global-props.mdx).
+
+### `src`
+
+{' '}
+
+<AndroidOnly /> <IOSOnly /> <VersionBadge>3.4</VersionBadge>
+
+```tsx
+src: string;
+```
+
+Sets the loading path for the frame resource.
+
+## Events
+
+Frontend can bind corresponding event callbacks to listen for runtime behaviors of the element, as shown below.
+
+### `bindload`
+
+{' '}
+
+<AndroidOnly /> <IOSOnly /> <VersionBadge>3.6</VersionBadge>
+
+```tsx
+bindload = (e: FrameLoadEvent) => {};
+```
+
+| Field         | Type   | Optional | Default | Platforms                                                    | Since | Description                  |
+| ------------- | ------ | -------- | ------- | ------------------------------------------------------------ | ----- | ---------------------------- |
+| statusCode    | number | No       | –       | <AndroidOnly /> <IOSOnly /> <VersionBadge>3.6</VersionBadge> | 3.6   | Frame loaded status code.    |
+| statusMessage | string | No       | –       | <AndroidOnly /> <IOSOnly /> <VersionBadge>3.6</VersionBadge> | 3.6   | Frame loaded status message. |
+| url           | string | No       | –       | <AndroidOnly /> <IOSOnly /> <VersionBadge>3.6</VersionBadge> | 3.6   | The loaded url of the frame. |
+
+Bind frame load event callback.

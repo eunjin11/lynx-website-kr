@@ -70,21 +70,27 @@ const enSuffix = ' Native for More';
 const enWords = ['Unlock', 'Render', 'Toward', 'Ship'];
 const zhWords = ['迈向', '更快的', '更多平台的', '更多人的'];
 const zhSuffix = '原生体验';
+const koWords = ['네이티브로', '더 빠른', '더 많은', '더 나은'];
+const koSuffix = ' 경험을';
 
 function HomeLayout(props: Parameters<typeof BaseHomeLayout>[0]) {
   const { pathname } = useLocation();
-  const isZh = pathname.startsWith('/zh/');
+  const lang = useLang();
   const { page } = usePageData();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState(
-    isZh ? `${zhWords[0]}${zhSuffix}` : `${enWords[0]}${enSuffix}`,
+    lang === 'zh'
+      ? `${zhWords[0]}${zhSuffix}`
+      : lang === 'ko'
+        ? `${koWords[0]}${koSuffix}`
+        : `${enWords[0]}${enSuffix}`,
   );
   const [delta, setDelta] = useState(200);
   const [isPaused, setIsPaused] = useState(false);
 
   const routePath = useMemo(() => {
-    let tmp = page.routePath.replace('/zh/', '/');
+    let tmp = page.routePath.replace('/zh/', '/').replace('/ko/', '/');
     return removeBase(tmp);
   }, [page]);
 
@@ -108,8 +114,9 @@ function HomeLayout(props: Parameters<typeof BaseHomeLayout>[0]) {
     // Add negative margin to h1 span to avoid text wrapping
     h1Ele.style.margin = '0 -100px';
 
-    const words = isZh ? zhWords : enWords;
-    const suffix = isZh ? zhSuffix : enSuffix;
+    const words = lang === 'zh' ? zhWords : lang === 'ko' ? koWords : enWords;
+    const suffix =
+      lang === 'zh' ? zhSuffix : lang === 'ko' ? koSuffix : enSuffix;
 
     const currentWord = words[currentWordIndex];
     const currentLength = text.replace(suffix, '').length;
@@ -146,7 +153,7 @@ function HomeLayout(props: Parameters<typeof BaseHomeLayout>[0]) {
       setCurrentWordIndex((prev) => (prev + 1) % words.length);
       setDelta(140);
     }
-  }, [currentWordIndex, isDeleting, text, isPaused, isZh]);
+  }, [currentWordIndex, isDeleting, text, isPaused, lang]);
 
   // Reset animation when language changes or when returning to home page
   useEffect(() => {
@@ -158,9 +165,15 @@ function HomeLayout(props: Parameters<typeof BaseHomeLayout>[0]) {
       setIsDeleting(false);
       setIsPaused(false);
       setDelta(200);
-      setText(isZh ? `${zhWords[0]}${zhSuffix}` : `${enWords[0]}${enSuffix}`);
+      setText(
+        lang === 'zh'
+          ? `${zhWords[0]}${zhSuffix}`
+          : lang === 'ko'
+            ? `${koWords[0]}${koSuffix}`
+            : `${enWords[0]}${enSuffix}`,
+      );
     }
-  }, [isZh, page]); // Watch both language and path changes
+  }, [lang, page]); // Watch both language and path changes
 
   useEffect(() => {
     const isHomePage = routePath === '/';

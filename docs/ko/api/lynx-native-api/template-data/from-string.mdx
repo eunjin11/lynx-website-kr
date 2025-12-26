@@ -1,0 +1,39 @@
+# fromString
+
+Input data in json and return the parsed `TemplateData` object.
+
+## Syntax
+
+### Android
+
+```java
+public static TemplateData fromString(String json);
+```
+
+#### Parameters
+
+- `json`: `String` type data in json format.
+
+#### Return
+
+- `TemplateData` constructed by `json`.
+
+### iOS
+
+```objc
+- (instancetype)initWithJson:(NSString *)json;
+```
+
+#### Parameters
+
+- `json`: `NSString*` type data in json format.
+
+#### Return
+
+- `TemplateData` constructed by `json`.
+
+## Compatibility
+
+import { APITable } from '@lynx';
+
+<APITable query="lynx-native-api/template-data/from-string" />

@@ -1,0 +1,45 @@
+---
+title: getJSModule()
+---
+
+# lynx: getJSModule() static method
+
+Acquire a JavaScript value that can be shared within a single LynxView, but not between different LynxViews.
+
+## Syntax
+
+```ts
+getJSModule: <Module>(name: string) => Module;
+```
+
+### Parameters
+
+#### name
+
+The name of the value that registered using [`lynx.registerModule`].
+
+### Return Value
+
+The registered value.
+
+If the `name` is not registered, return `undefined`.
+
+## Examples
+
+### Get module from JS
+
+Use the [`lynx.registerModule`] method to register a value:
+
+```js
+const fooModule = {};
+lynx.registerModule('foo', fooModule);
+lynx.getJSModule('foo') === fooModule; // true
+```
+
+[`lynx.registerModule`]: ./lynx-register-module.mdx
+
+## Compatibility
+
+import { APITable } from '@lynx';
+
+<APITable query="lynx-api/lynx/getJSModule" />

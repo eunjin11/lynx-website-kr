@@ -9,20 +9,23 @@ import styles from './index.module.less';
 const desc = {
   zh: '开始用 ',
   en: 'Start building with ',
+  ko: '시작하기 ',
 };
 
 const btnText = {
   zh: '快速开始',
   en: 'Quick Start',
+  ko: '빠른 시작',
 };
 
 const tailText = {
   zh: ' 构建',
   en: '',
+  ko: '',
 };
 
 export const Banner: React.FC = () => {
-  const lang = useLang() as 'en' | 'zh';
+  const lang = useLang() as 'en' | 'zh' | 'ko';
 
   return (
     <div className={styles['banner-frame']}>
@@ -31,7 +34,7 @@ export const Banner: React.FC = () => {
         {tailText[lang]}
       </p>
       <Button href={`guide/start/quick-start.html`}>
-        {btnText[lang] || btnText['en']}
+        {btnText[lang] || btnText['en'] || btnText['ko']}
       </Button>
       <DotPattern
         className={cn(

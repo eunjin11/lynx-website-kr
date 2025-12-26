@@ -1,0 +1,29 @@
+---
+title: isProfileRecording()
+---
+
+Checks if trace recording is currently active.
+
+#### Syntax
+
+```typescript
+isProfileRecording(): boolean
+```
+
+#### Return Value
+
+Return `true` if trace recording is currently active;
+
+### Examples
+
+```typescript
+if (lynx.performance.isProfileRecording()) {
+  lynx.performance.profileMark('RecordingIsActive');
+}
+```
+
+## Compatibility
+
+import { APITable } from '@lynx';
+
+<APITable query="lynx-api/lynx/performance" />

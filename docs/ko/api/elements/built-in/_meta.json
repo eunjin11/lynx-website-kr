@@ -1,0 +1,52 @@
+[
+  {
+    "type": "file",
+    "name": "view",
+    "label": "<view>"
+  },
+  {
+    "type": "file",
+    "name": "text",
+    "label": "<text>"
+  },
+  {
+    "type": "file",
+    "name": "image",
+    "label": "<image>"
+  },
+  {
+    "type": "file",
+    "name": "scroll-view",
+    "label": "<scroll-view>"
+  },
+  {
+    "type": "file",
+    "name": "list",
+    "label": "<list>"
+  },
+  {
+    "type": "file",
+    "name": "page",
+    "label": "<page>"
+  },
+  {
+    "type": "file",
+    "name": "frame",
+    "label": "<frame>"
+  },
+  {
+    "type": "file",
+    "name": "input",
+    "label": "<input>"
+  },
+  {
+    "type": "file",
+    "name": "textarea",
+    "label": "<textarea>"
+  },
+  {
+    "type": "file",
+    "name": "overlay",
+    "label": "<overlay>"
+  }
+]

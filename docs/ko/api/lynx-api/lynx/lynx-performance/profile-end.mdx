@@ -1,0 +1,24 @@
+---
+title: profileEnd()
+---
+
+Marks the end of the most recent [trace event](https://perfetto.dev/docs/instrumentation/track-events).
+
+#### Syntax
+
+```typescript
+profileEnd(): void;
+```
+
+#### Examples
+
+```typescript
+// End the most recent duration event
+lynx.performance.profileEnd();
+```
+
+## Compatibility
+
+import { APITable } from '@lynx';
+
+<APITable query="lynx-api/lynx/performance" />
