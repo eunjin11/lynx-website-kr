@@ -144,6 +144,26 @@ export default defineConfig({
           text: '📝 Edit this page on GitHub',
         },
       },
+      {
+        lang: 'ko',
+        title: 'Lynx',
+        description:
+          'Web 기술로 크로스플랫폼 앱을 빠르게 구축하는 고성능 프레임워크',
+        label: '한국어',
+        editLink: {
+          docRepoBaseUrl:
+            'https://github.com/lynx-family/lynx-website/tree/main/docs',
+          text: '📝 GitHub에서 이 페이지 편집하기',
+        },
+        searchNoResultsText: '검색 결과가 없습니다',
+        searchPlaceholderText: '문서 검색',
+        searchSuggestedQueryText: '다른 검색어로 다시 시도하세요',
+        overview: {
+          filterNameText: '필터',
+          filterPlaceholderText: '키워드 입력',
+          filterNoResultText: '일치하는 API를 찾을 수 없습니다',
+        },
+      },
     ],
     socialLinks: [
       {
@@ -197,6 +217,16 @@ export default defineConfig({
           output: {
             type: 'rss',
             filename: 'blog-rss-zh.xml',
+          },
+        },
+        {
+          id: 'blog-rss-ko',
+          test: '/ko/blog',
+          title: 'Lynx 블로그',
+          language: 'ko',
+          output: {
+            type: 'rss',
+            filename: 'blog-rss-ko.xml',
           },
         },
       ],

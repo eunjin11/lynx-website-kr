@@ -14,6 +14,7 @@ export type SubsiteConfig = {
   label: string;
   description: string;
   descriptionZh: string;
+  descriptionKo: string;
   home: string;
   url: string;
   logo: {
@@ -28,6 +29,7 @@ export const SUBSITES_CONFIG: SubsiteConfig[] = [
     label: 'Lynx',
     description: 'The fundamental of Lynx',
     descriptionZh: 'Lynx 基础',
+    descriptionKo: 'Lynx 기초',
     home: '/',
     url: '/guide/ui/elements-components',
     logo: {
@@ -40,6 +42,8 @@ export const SUBSITES_CONFIG: SubsiteConfig[] = [
     value: 'react',
     label: 'ReactLynx',
     description: 'Build Lynx apps with React',
+    descriptionZh: '用 React 开发 Lynx 应用',
+    descriptionKo: 'React로 Lynx 앱 개발',
     home: '/react/',
     url: '/react/introduction',
     logo: {
@@ -47,13 +51,13 @@ export const SUBSITES_CONFIG: SubsiteConfig[] = [
         'https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/reactlynx-logo-light.svg',
       dark: 'https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/reactlynx-logo-dark.svg',
     },
-    descriptionZh: '用 React 开发 Lynx 应用',
   },
   {
     value: 'rspeedy',
     label: 'Rspeedy',
     description: 'The Lynx build tool',
     descriptionZh: 'Lynx 构建工具',
+    descriptionKo: 'Lynx 빌드 도구',
     home: '/rspeedy/',
     url: '/rspeedy/cli',
     logo: {
@@ -80,18 +84,22 @@ const SHARED_DOC_TITLES = {
   'quick-start': {
     en: 'Quick Start',
     zh: '快速上手',
+    ko: '빠른 시작',
   },
   'integrate-with-existing-apps': {
     en: 'Integrate with Existing Apps',
     zh: '接入现有应用',
+    ko: '기존 앱과 통합',
   },
   'tutorial-gallery': {
     en: 'Tutorial: Product Gallery',
     zh: '教程：产品列表',
+    ko: '튜토리얼: 상품 갤러리',
   },
   'tutorial-product-detail': {
     en: 'Tutorial: Product Detail',
     zh: '教程：产品详情',
+    ko: '튜토리얼: 상품 상세',
   },
 } as const;
 
@@ -124,7 +132,7 @@ export function getUrlPathPrefix(pathname: string, sharedPaths: string[]) {
   }
 
   const [first, second] = segments;
-  const effectiveSegment = first === 'zh' ? second : first;
+  const effectiveSegment = first === 'zh' || first === 'ko' ? second : first;
 
   if (!effectiveSegment) {
     return '';
@@ -169,7 +177,7 @@ export const createSharedRouteSidebar = (
   // Generate sidebar items from shared doc titles
   const sidebarItems = Object.entries(SHARED_DOC_TITLES).map(
     ([filename, texts]) => ({
-      text: texts[lang === 'zh' ? 'zh' : 'en'],
+      text: texts[lang === 'zh' ? 'zh' : lang === 'ko' ? 'ko' : 'en'],
       link: `${fullPrefix}/${filename}`,
     }),
   );
@@ -177,7 +185,7 @@ export const createSharedRouteSidebar = (
   // Define shared sidebar sections with localized text
   const sharedSections: SidebarData = [
     {
-      text: lang === 'zh' ? '开始' : 'Get Started',
+      text: lang === 'zh' ? '开始' : lang === 'ko' ? '시작하기' : 'Get Started',
       items: sidebarItems,
       collapsible: true,
       // Collapse section if not currently viewing pages under shared root
