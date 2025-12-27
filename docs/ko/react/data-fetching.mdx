@@ -2,25 +2,25 @@ import { PackageManagerTabs } from '@theme';
 
 # Data Fetching
 
-Whether fetching static content from a remote server or interacting with a REST API, ReactLynx applications often need to retrieve data from external sources. For example, you might want to load user posts in a social media app or fetch the latest product listings in an e-commerce application.
+원격 서버에서 정적 콘텐츠를 가져오든 REST API와 상호 작용하든 ReactLynx 애플리케이션은 외부 소스에서 데이터를 가져와야 하는 경우가 많습니다. 예를 들어, 소셜 미디어 앱에 사용자 게시물을 로드하거나 이커머스 애플리케이션에서 최신 제품 목록을 가져올 수 있습니다.
 
-Lynx provides the [Fetch API](/api/lynx-api/global/fetch), enabling you to make network requests. You can refer to the [Networking](/guide/interaction/networking) chapter for more details. The Fetch API provided by Lynx can be used together with server state management libraries from the React ecosystem, such as [TanStack Query (React Query)](https://tanstack.com/query), to simplify data fetching and state management.
+Lynx는 [Fetch API](/api/lynx-api/global/fetch)를 제공하여 네트워크 요청을 가능하게 합니다. [Networking](/guide/interaction/networking) 장을 참조하세요. Lynx의 Fetch API는 React 생태계의 서버 상태 관리 라이브러리와 함께 사용하여 데이터 가져오기와 상태 관리를 단순화할 수 있습니다.
 
-It is important to note that Lynx's Fetch API has subtle differences compared to the [Web Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). You can check the [Fetch API Reference - Compatibility](/api/lynx-api/global/fetch#compatibility) section to learn more about these differences. As a result, you may need to adapt libraries from the React ecosystem to ensure compatibility. If you encounter any issues on Lynx Fetch API, you are welcome to submit feature requests or [contribute](https://github.com/lynx-family/lynx/blob/develop/CONTRIBUTING.md) to help Lynx better support the React ecosystem.
+Lynx의 Fetch API는 [Web Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)와 미묘한 차이가 있습니다. [Fetch API Reference - Compatibility](/api/lynx-api/global/fetch#compatibility) 섹션을 참조하세요. 따라서 React 생태계의 라이브러리를 조정하여 호환성을 보장해야 할 수 있습니다. Lynx Fetch API에 문제가 발생하면 기능을 요청하거나 [contribute](https://github.com/lynx-family/lynx/blob/develop/CONTRIBUTING.md)를 통해 React 생태계를 더 잘 지원하는 데 도움을 줄 수 있습니다.
 
-## Using TanStack Query
+## TanStack Query 사용하기
 
-TanStack Query is a popular server state management library in the React ecosystem, helping developers easily manage data fetching and caching.
+TanStack Query는 React 생태계에서 인기 있는 서버 상태 관리 라이브러리로, 개발자가 데이터 가져오기와 캐시 관리를 쉽게 할 수 있도록 도와줍니다.
 
-### Installing Dependencies
+### 의존성 설치
 
 <PackageManagerTabs command="install @tanstack/react-query" />
 
-### Example
+### 예제
 
-The following example application shows how to use TanStack Query with the Fetch API in ReactLynx to fetch, display, and delete user posts provided by the [JSONPlaceholder API](https://jsonplaceholder.typicode.com/).
+다음 예제 애플리케이션은 ReactLynx에서 TanStack Query와 Fetch API를 사용하여 [JSONPlaceholder API](https://jsonplaceholder.typicode.com/)에서 제공하는 사용자 게시물을 가져오고, 표시하고, 삭제하는 방법을 보여줍니다.
 
-The application first uses the [`useQuery`](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) hook from TanStack Query to call `fetchPosts`, fetching and displaying the first 10 posts. When the user clicks the "Delete Post 1" button, it triggers an [Optimistic Update](https://tanstack.com/query/v4/docs/framework/react/guides/optimistic-updates) using the [`useMutation`](https://tanstack.com/query/latest/docs/framework/react/reference/useMutation) hook: the post with `id` 1 is immediately removed from the list, and the `deletePost` function calls the Fetch API to send a delete request. If the request fails, the state will roll back to its original state.
+애플리케이션은 먼저 TanStack Query의 [`useQuery`](https://tanstack.com/query/v5/docs/framework/react/reference/useQuery) hook을 사용하여 `fetchPosts`를 호출하여 첫 10개의 게시물을 가져오고 표시합니다. 사용자가 "Delete Post 1" 버튼을 클릭하면 [`useMutation`](https://tanstack.com/query/latest/docs/framework/react/reference/useMutation) hook을 사용하여 [Optimistic Update](https://tanstack.com/query/v4/docs/framework/react/guides/optimistic-updates)를 트리거합니다: `id`가 1인 게시물은 즉시 목록에서 제거되고 `deletePost` 함수는 Fetch API를 호출하여 삭제 요청을 보냅니다. 요청이 실패하면 상태는 원래 상태로 롤백됩니다.
 
 import { Go } from '@lynx';
 
